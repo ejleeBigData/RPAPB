@@ -1,0 +1,11 @@
+tasks:
+  Automate Notepad:
+    robotTaskName: Automate Notepad
+condaConfigFile: conda.yaml
+ignoreFiles:
+- .gitignore
+artifactsDir: output
+PATH:
+- .
+PYTHONPATH:
+- .
