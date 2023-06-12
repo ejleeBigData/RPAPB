@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.9.13 on win32)" generated="20230612 19:29:27.163" rpa="true" schemaversion="3">
+<suite id="s1" name="Id-Based" source="c:\Users\LEJ\Documents\Robots\day06examplecalc\id-based.robot">
+<test id="s1-t1" name="Run Example" line="8">
+<kw name="Calculate using app ids">
+<kw name="Open the Calculator">
+<kw name="Windows Search" library="RPA.Windows">
+<arg>Calculator</arg>
+<tag>window</tag>
+<doc>Use Windows search window to launch application.</doc>
+<msg timestamp="20230612 19:29:27.987" level="INFO">Sending keys '{Win}' to element &lt;module 'uiautomation' from 'c:\\ProgramData\\robocorp\\ht\\9f11470_b1f3c24_09529949\\lib\\site-packages\\uiautomation\\__init__.py'&gt;</msg>
+<msg timestamp="20230612 19:29:28.524" level="INFO">Sending keys 'Calculator' to element &lt;module 'uiautomation' from 'c:\\ProgramData\\robocorp\\ht\\9f11470_b1f3c24_09529949\\lib\\site-packages\\uiautomation\\__init__.py'&gt;</msg>
+<msg timestamp="20230612 19:29:29.176" level="INFO">Sending keys '{Enter}' to element &lt;module 'uiautomation' from 'c:\\ProgramData\\robocorp\\ht\\9f11470_b1f3c24_09529949\\lib\\site-packages\\uiautomation\\__init__.py'&gt;</msg>
+<status status="PASS" starttime="20230612 19:29:27.986" endtime="20230612 19:29:32.732"/>
+</kw>
+<status status="PASS" starttime="20230612 19:29:27.985" endtime="20230612 19:29:32.733"/>
+</kw>
+<kw name="Add two numbers using app ids">
+<arg>8</arg>
+<arg>7</arg>
+<kw name="Click" library="RPA.Windows">
+<arg>id:clearEntryButton</arg>
+<tag>action</tag>
+<tag>mouse</tag>
+<doc>Mouse click on element matching given locator.</doc>
+<msg timestamp="20230612 19:29:32.738" level="INFO">Getting element with locator: id:clearEntryButton</msg>
+<msg timestamp="20230612 19:29:32.956" level="INFO">Resulted root element: WindowsElement(item=&lt;uiautomation.uiautomation.PaneControl object at 0x0000024728326C10&gt;, locator=None, name='데스크톱 1', automation_id='', control_type='PaneControl', class_name='#32769', left=0, right=1920, top=0, bottom=1080, width=1920, height=1080, xcenter=960, ycenter=540)</msg>
+<msg timestamp="20230612 19:29:32.957" level="INFO">Locator 'id:clearEntryButton' produced matcher: MatchObject(locators=[('AutomationId', 'clearEntryButton', 0)], _classes=set(), max_level=0)</msg>
+<msg timestamp="20230612 19:29:33.069" level="INFO">Returning element: WindowsElement(item=&lt;uiautomation.uiautomation.ButtonControl object at 0x0000024728326B20&gt;, locator='id:clearEntryButton', name='입력 지우기', automation_id='clearEntryButton', control_type='ButtonControl', class_name='Button', left=727, right=803, top=-530, bottom=-479, width=76, height=51, xcenter=765, ycenter=-505)</msg>
+<status status="PASS" starttime="20230612 19:29:32.736" endtime="20230612 19:29:33.629"/>
+</kw>
+<kw name="Click" library="RPA.Windows">
+<arg>id:num${first}Button</arg>
+<tag>action</tag>
+<tag>mouse</tag>
+<doc>Mouse click on element matching given locator.</doc>
+<msg timestamp="20230612 19:29:33.632" level="INFO">Getting element with locator: id:num8Button</msg>
+<msg timestamp="20230612 19:29:33.634" level="INFO">Resulted root element: WindowsElement(item=&lt;uiautomation.uiautomation.PaneControl object at 0x0000024728326910&gt;, locator=None, name='데스크톱 1', automation_id='', control_type='PaneControl', class_name='#32769', left=0, right=1920, top=0, bottom=1080, width=1920, height=1080, xcenter=960, ycenter=540)</msg>
+<msg timestamp="20230612 19:29:33.634" level="INFO">Locator 'id:num8Button' produced matcher: MatchObject(locators=[('AutomationId', 'num8Button', 0)], _classes=set(), max_level=0)</msg>
+<msg timestamp="20230612 19:29:33.762" level="INFO">Returning element: WindowsElement(item=&lt;uiautomation.uiautomation.ButtonControl object at 0x0000024728326C40&gt;, locator='id:num8Button', name='8', automation_id='num8Button', control_type='ButtonControl', class_name='Button', left=727, right=804, top=-424, bottom=-373, width=77, height=51, xcenter=765, ycenter=-399)</msg>
+<status status="PASS" starttime="20230612 19:29:33.630" endtime="20230612 19:29:34.330"/>
+</kw>
+<kw name="Click" library="RPA.Windows">
+<arg>id:plusButton</arg>
+<tag>action</tag>
+<tag>mouse</tag>
+<doc>Mouse click on element matching given locator.</doc>
+<msg timestamp="20230612 19:29:34.337" level="INFO">Getting element with locator: id:plusButton</msg>
+<msg timestamp="20230612 19:29:34.340" level="INFO">Resulted root element: WindowsElement(item=&lt;uiautomation.uiautomation.PaneControl object at 0x0000024728326AC0&gt;, locator=None, name='데스크톱 1', automation_id='', control_type='PaneControl', class_name='#32769', left=0, right=1920, top=0, bottom=1080, width=1920, height=1080, xcenter=960, ycenter=540)</msg>
+<msg timestamp="20230612 19:29:34.341" level="INFO">Locator 'id:plusButton' produced matcher: MatchObject(locators=[('AutomationId', 'plusButton', 0)], _classes=set(), max_level=0)</msg>
+<msg timestamp="20230612 19:29:34.454" level="INFO">Returning element: WindowsElement(item=&lt;uiautomation.uiautomation.ButtonControl object at 0x0000024728326D30&gt;, locator='id:plusButton', name='양의 값', automation_id='plusButton', control_type='ButtonControl', class_name='Button', left=884, right=960, top=-318, bottom=-267, width=76, height=51, xcenter=922, ycenter=-293)</msg>
+<status status="PASS" starttime="20230612 19:29:34.333" endtime="20230612 19:29:35.013"/>
+</kw>
+<kw name="Click" library="RPA.Windows">
+<arg>id:num${second}Button</arg>
+<tag>action</tag>
+<tag>mouse</tag>
+<doc>Mouse click on element matching given locator.</doc>
+<msg timestamp="20230612 19:29:35.019" level="INFO">Getting element with locator: id:num7Button</msg>
+<msg timestamp="20230612 19:29:35.021" level="INFO">Resulted root element: WindowsElement(item=&lt;uiautomation.uiautomation.PaneControl object at 0x0000024728326EE0&gt;, locator=None, name='데스크톱 1', automation_id='', control_type='PaneControl', class_name='#32769', left=0, right=1920, top=0, bottom=1080, width=1920, height=1080, xcenter=960, ycenter=540)</msg>
+<msg timestamp="20230612 19:29:35.022" level="INFO">Locator 'id:num7Button' produced matcher: MatchObject(locators=[('AutomationId', 'num7Button', 0)], _classes=set(), max_level=0)</msg>
+<msg timestamp="20230612 19:29:35.165" level="INFO">Returning element: WindowsElement(item=&lt;uiautomation.uiautomation.ButtonControl object at 0x00000247283267C0&gt;, locator='id:num7Button', name='7', automation_id='num7Button', control_type='ButtonControl', class_name='Button', left=648, right=725, top=-424, bottom=-373, width=77, height=51, xcenter=686, ycenter=-399)</msg>
+<status status="PASS" starttime="20230612 19:29:35.015" endtime="20230612 19:29:35.726"/>
+</kw>
+<kw name="Click" library="RPA.Windows">
+<arg>id:equalButton</arg>
+<tag>action</tag>
+<tag>mouse</tag>
+<doc>Mouse click on element matching given locator.</doc>
+<msg timestamp="20230612 19:29:35.731" level="INFO">Getting element with locator: id:equalButton</msg>
+<msg timestamp="20230612 19:29:35.734" level="INFO">Resulted root element: WindowsElement(item=&lt;uiautomation.uiautomation.PaneControl object at 0x0000024728326FA0&gt;, locator=None, name='데스크톱 1', automation_id='', control_type='PaneControl', class_name='#32769', left=0, right=1920, top=0, bottom=1080, width=1920, height=1080, xcenter=960, ycenter=540)</msg>
+<msg timestamp="20230612 19:29:35.735" level="INFO">Locator 'id:equalButton' produced matcher: MatchObject(locators=[('AutomationId', 'equalButton', 0)], _classes=set(), max_level=0)</msg>
+<msg timestamp="20230612 19:29:35.849" level="INFO">Returning element: WindowsElement(item=&lt;uiautomation.uiautomation.ButtonControl object at 0x0000024728326760&gt;, locator='id:equalButton', name='일치', automation_id='equalButton', control_type='ButtonControl', class_name='Button', left=884, right=960, top=-265, bottom=-214, width=76, height=51, xcenter=922, ycenter=-240)</msg>
+<status status="PASS" starttime="20230612 19:29:35.728" endtime="20230612 19:29:36.410"/>
+</kw>
+<status status="PASS" starttime="20230612 19:29:32.734" endtime="20230612 19:29:36.412"/>
+</kw>
+<kw name="Log results">
+<kw name="Get Attribute" library="RPA.Windows">
+<var>${result}</var>
+<arg>id:CalculatorResults</arg>
+<arg>Name</arg>
+<doc>Get attribute value of the element defined by the locator.</doc>
+<msg timestamp="20230612 19:29:36.415" level="INFO">Getting element with locator: id:CalculatorResults</msg>
+<msg timestamp="20230612 19:29:36.417" level="INFO">Resulted root element: WindowsElement(item=&lt;uiautomation.uiautomation.PaneControl object at 0x0000024728326400&gt;, locator=None, name='데스크톱 1', automation_id='', control_type='PaneControl', class_name='#32769', left=0, right=1920, top=0, bottom=1080, width=1920, height=1080, xcenter=960, ycenter=540)</msg>
+<msg timestamp="20230612 19:29:36.418" level="INFO">Locator 'id:CalculatorResults' produced matcher: MatchObject(locators=[('AutomationId', 'CalculatorResults', 0)], _classes=set(), max_level=0)</msg>
+<msg timestamp="20230612 19:29:36.508" level="INFO">Returning element: WindowsElement(item=&lt;uiautomation.uiautomation.TextControl object at 0x00000247288ACBE0&gt;, locator='id:CalculatorResults', name='표시는 15', automation_id='CalculatorResults', control_type='TextControl', class_name='', left=644, right=964, top=-639, bottom=-564, width=320, height=75, xcenter=804, ycenter=-602)</msg>
+<msg timestamp="20230612 19:29:36.509" level="INFO">${result} = 표시는 15</msg>
+<status status="PASS" starttime="20230612 19:29:36.414" endtime="20230612 19:29:36.509"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${result}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230612 19:29:36.510" level="INFO">표시는 15</msg>
+<status status="PASS" starttime="20230612 19:29:36.509" endtime="20230612 19:29:36.511"/>
+</kw>
+<kw name="Screenshot" library="RPA.Windows">
+<arg>계산기</arg>
+<arg>id-based-result.png</arg>
+<tag>action</tag>
+<doc>Take a screenshot of the element defined by the locator.</doc>
+<msg timestamp="20230612 19:29:36.513" level="INFO">Getting element with locator: 계산기</msg>
+<msg timestamp="20230612 19:29:36.515" level="INFO">Resulted root element: WindowsElement(item=&lt;uiautomation.uiautomation.PaneControl object at 0x00000247288ACD00&gt;, locator=None, name='데스크톱 1', automation_id='', control_type='PaneControl', class_name='#32769', left=0, right=1920, top=0, bottom=1080, width=1920, height=1080, xcenter=960, ycenter=540)</msg>
+<msg timestamp="20230612 19:29:36.516" level="INFO">Locator '계산기' produced matcher: MatchObject(locators=[('Name', '계산기', 0)], _classes=set(), max_level=0)</msg>
+<msg timestamp="20230612 19:29:36.609" level="INFO">Returning element: WindowsElement(item=&lt;uiautomation.uiautomation.WindowControl object at 0x00000247288ACEB0&gt;, locator='계산기', name='계산기', automation_id='', control_type='WindowControl', class_name='ApplicationFrameWindow', left=636, right=972, top=-743, bottom=-202, width=336, height=541, xcenter=804, ycenter=-473)</msg>
+<status status="PASS" starttime="20230612 19:29:36.511" endtime="20230612 19:29:36.635"/>
+</kw>
+<status status="PASS" starttime="20230612 19:29:36.413" endtime="20230612 19:29:36.635"/>
+</kw>
+<status status="PASS" starttime="20230612 19:29:27.983" endtime="20230612 19:29:36.636"/>
+</kw>
+<kw name="Close Window" library="RPA.Windows" type="TEARDOWN">
+<arg>name:계산기</arg>
+<tag>window</tag>
+<doc>Closes identified windows or logs the problems.</doc>
+<msg timestamp="20230612 19:29:36.642" level="INFO">Getting element with locator: name:계산기 and type:WindowControl</msg>
+<msg timestamp="20230612 19:29:36.643" level="INFO">Resulted root element: WindowsElement(item=&lt;uiautomation.uiautomation.PaneControl object at 0x000002471A0974F0&gt;, locator='name:계산기', name='데스크톱 1', automation_id='', control_type='PaneControl', class_name='#32769', left=0, right=1920, top=0, bottom=1080, width=1920, height=1080, xcenter=960, ycenter=540)</msg>
+<msg timestamp="20230612 19:29:36.644" level="INFO">Locator 'name:계산기 and type:WindowControl' produced matcher: MatchObject(locators=[('Name', '계산기', 0), ('ControlType', 'WindowControl', 0)], _classes=set(), max_level=0)</msg>
+<msg timestamp="20230612 19:29:36.722" level="INFO">Returning element: WindowsElement(item=&lt;uiautomation.uiautomation.WindowControl object at 0x0000024728326F40&gt;, locator='name:계산기 and type:WindowControl', name='계산기', automation_id='', control_type='WindowControl', class_name='ApplicationFrameWindow', left=636, right=972, top=-743, bottom=-202, width=336, height=541, xcenter=804, ycenter=-473)</msg>
+<msg timestamp="20230612 19:29:36.788" level="INFO">Getting element with locator: WindowsElement(item=&lt;uiautomation.uiautomation.WindowControl object at 0x0000024728326F40&gt;, locator='name:계산기 and type:WindowControl', name='계산기', automation_id='', control_type='WindowControl', class_name='ApplicationFrameWindow', left=636, right=972, top=-743, bottom=-202, width=336, height=541, xcenter=804, ycenter=-473)</msg>
+<msg timestamp="20230612 19:29:36.789" level="INFO">Returning element: WindowsElement(item=&lt;uiautomation.uiautomation.WindowControl object at 0x0000024728326F40&gt;, locator='name:계산기 and type:WindowControl', name='계산기', automation_id='', control_type='WindowControl', class_name='ApplicationFrameWindow', left=636, right=972, top=-743, bottom=-202, width=336, height=541, xcenter=804, ycenter=-473)</msg>
+<msg timestamp="20230612 19:29:37.297" level="INFO">Closing window with name: 계산기 (PID: 12568)</msg>
+<status status="PASS" starttime="20230612 19:29:36.637" endtime="20230612 19:29:37.299"/>
+</kw>
+<status status="PASS" starttime="20230612 19:29:27.980" endtime="20230612 19:29:37.302"/>
+</test>
+<status status="PASS" starttime="20230612 19:29:27.176" endtime="20230612 19:29:37.306"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Id-Based">Id-Based</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
