@@ -1,0 +1,11 @@
+tasks:
+  Market_01:
+    robotTaskName: Market_01
+condaConfigFile: conda.yaml
+ignoreFiles:
+- .gitignore
+artifactsDir: output
+PATH:
+- .
+PYTHONPATH:
+- .

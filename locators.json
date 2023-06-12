@@ -1,0 +1,9 @@
+{
+    "Boxcomponentnthchild1boxpricesellertextvalue": {
+        "screenshot": ".images\\boxcomponentnthchild1boxpricesellertextvalue-screenshot.png",
+        "source": "https://browse.gmarket.co.kr/search?keyword=icebox50L",
+        "strategy": "css",
+        "type": "browser",
+        "value": ".box__component:nth-child(1) .box__price-seller > .text__value"
+    }
+}
