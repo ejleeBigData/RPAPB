@@ -1,0 +1,9 @@
+{
+    "Wheadline": {
+        "screenshot": ".images\\wheadline-screenshot.png",
+        "source": "https://news.sbs.co.kr/news/newsMain.do",
+        "strategy": "css",
+        "type": "browser",
+        "value": ".w_headline"
+    }
+}

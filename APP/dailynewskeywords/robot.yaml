@@ -1,0 +1,11 @@
+tasks:
+  Extract News Text:
+    robotTaskName: Extract News Text
+condaConfigFile: conda.yaml
+ignoreFiles:
+- .gitignore
+artifactsDir: output
+PATH:
+- .
+PYTHONPATH:
+- .

@@ -1,0 +1,2773 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.9.13 on win32)" generated="20230618 20:19:41.529" rpa="true" schemaversion="3">
+<suite id="s1" name="Dailynewskeywords" source="C:\Users\mj2gr\Documents\Robots\dailynewskeywords">
+<suite id="s1-s1" name="Tasks" source="C:\Users\mj2gr\Documents\Robots\dailynewskeywords\tasks.robot">
+<test id="s1-s1-t1" name="Extract News Text" line="15">
+<kw name="SBS Task">
+<kw name="Open Available Browser" library="RPA.Browser.Selenium">
+<arg>${URL}[0]</arg>
+<arg>headless=${TRUE}</arg>
+<doc>Attempts to open a browser on the user's device from a set of
+supported browsers. Automatically downloads a corresponding webdriver
+if none is already installed.</doc>
+<msg timestamp="20230618 20:19:43.460" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg timestamp="20230618 20:19:43.465" level="INFO">====== WebDriver manager ======</msg>
+<msg timestamp="20230618 20:19:45.138" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg timestamp="20230618 20:19:46.223" level="INFO">Created Chrome browser with arguments: --headless --disable-gpu --window-size=1440,900 --disable-dev-shm-usage --disable-web-security --allow-running-insecure-content --no-sandbox</msg>
+<msg timestamp="20230618 20:19:46.223" level="INFO" html="true">&lt;p&gt;Attempted combinations:&lt;/p&gt;&lt;div class="doc"&gt;&lt;table&gt;&lt;tr&gt;&lt;th&gt;Browser&lt;/th&gt;&lt;th&gt;Download&lt;/th&gt;&lt;th&gt;Error&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Chrome&lt;/td&gt;&lt;td&gt;False&lt;/td&gt;&lt;td&gt;Message: 'chromedriver' executable needs to be in PATH. Please see https://chromedriver.chromium.org/home
+&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Chrome&lt;/td&gt;&lt;td&gt;True&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</msg>
+<msg timestamp="20230618 20:19:46.223" level="INFO">Opening url 'https://news.sbs.co.kr/news/newsMain.do'</msg>
+<status status="PASS" starttime="20230618 20:19:43.459" endtime="20230618 20:19:47.526"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="RPA.Browser.Selenium">
+<arg>class:w_news_list</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230618 20:19:47.527" endtime="20230618 20:19:47.539"/>
+</kw>
+<kw name="Get WebElements" library="RPA.Browser.Selenium">
+<var>${text_elements}</var>
+<arg>class:w_news_list .desc</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<msg timestamp="20230618 20:19:47.553" level="INFO">${text_elements} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_56")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement...</msg>
+<status status="PASS" starttime="20230618 20:19:47.539" endtime="20230618 20:19:47.554"/>
+</kw>
+<kw name="Scroll Element Into View" library="RPA.Browser.Selenium">
+<arg>class:w_news_list</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20230618 20:19:47.554" endtime="20230618 20:19:47.840"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${text_list}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20230618 20:19:47.841" level="INFO">${text_list} = []</msg>
+<status status="PASS" starttime="20230618 20:19:47.841" endtime="20230618 20:19:47.841"/>
+</kw>
+<for flavor="IN">
+<var>${element}</var>
+<value>@{text_elements}</value>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_56")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:47.854" level="INFO">${text} = 당정 "해양방사능 조사 확대…가짜뉴스 실시간 대응"</msg>
+<status status="PASS" starttime="20230618 20:19:47.841" endtime="20230618 20:19:47.854"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:47.856" endtime="20230618 20:19:47.856"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:47.841" endtime="20230618 20:19:47.857"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_57")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:47.867" level="INFO">${text} = '5개 종목 하한가 사태' 주식카페 운영자 부당이득 104억 원 추정</msg>
+<status status="PASS" starttime="20230618 20:19:47.857" endtime="20230618 20:19:47.867"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:47.868" endtime="20230618 20:19:47.868"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:47.857" endtime="20230618 20:19:47.868"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_58")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:47.879" level="INFO">${text} = "퀴어축제 행진, 도로점용 아냐"…서울선 대구시와 다른 해석</msg>
+<status status="PASS" starttime="20230618 20:19:47.868" endtime="20230618 20:19:47.879"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:47.879" endtime="20230618 20:19:47.880"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:47.868" endtime="20230618 20:19:47.880"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_59")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:47.892" level="INFO">${text} = 영유아도 사교육 바람…22% 학원 다니고 12% 학습지 공부</msg>
+<status status="PASS" starttime="20230618 20:19:47.880" endtime="20230618 20:19:47.892"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:47.892" endtime="20230618 20:19:47.892"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:47.880" endtime="20230618 20:19:47.892"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_60")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:47.947" level="INFO">${text} = 검찰, 납북귀환 어부 35명 직권 재심청구…피해자 모임 "뒷북 아쉬움"</msg>
+<status status="PASS" starttime="20230618 20:19:47.893" endtime="20230618 20:19:47.947"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:47.948" endtime="20230618 20:19:47.948"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:47.893" endtime="20230618 20:19:47.948"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_61")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:47.957" level="INFO">${text} = 무력분쟁 수단 군벌, 72시간 동안 휴전…"초기 몇시간은 일단 평온"</msg>
+<status status="PASS" starttime="20230618 20:19:47.948" endtime="20230618 20:19:47.957"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:47.957" endtime="20230618 20:19:47.957"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:47.948" endtime="20230618 20:19:47.957"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_62")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:47.964" level="INFO">${text} = 강릉서 인터넷으로 만난 남녀 4명 극단선택…3명 사망</msg>
+<status status="PASS" starttime="20230618 20:19:47.958" endtime="20230618 20:19:47.964"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:47.964" endtime="20230618 20:19:47.965"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:47.958" endtime="20230618 20:19:47.965"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_24")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:47.973" level="INFO">${text} = 수능 논란 확산되자…"교육부, 6월 대입 방향 발표"</msg>
+<status status="PASS" starttime="20230618 20:19:47.965" endtime="20230618 20:19:47.973"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:47.973" endtime="20230618 20:19:47.973"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:47.965" endtime="20230618 20:19:47.973"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_27")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:47.978" level="INFO">${text} = 숨진 장인 집에서 1300만 원 나왔는데…"통째 팔겠다" 왜?</msg>
+<status status="PASS" starttime="20230618 20:19:47.973" endtime="20230618 20:19:47.980"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:47.980" endtime="20230618 20:19:47.980"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:47.973" endtime="20230618 20:19:47.980"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_30")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:47.987" level="INFO">${text} = '50시간 운전 챌린지' 촬영하던 유튜버, 5살 목숨 앗아갔다</msg>
+<status status="PASS" starttime="20230618 20:19:47.980" endtime="20230618 20:19:47.987"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:47.987" endtime="20230618 20:19:47.987"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:47.980" endtime="20230618 20:19:47.988"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_36")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:47.994" level="INFO">${text} = 아직 6월인데 34도…'서울 첫 폭염특보' 월요일 더 덥다</msg>
+<status status="PASS" starttime="20230618 20:19:47.988" endtime="20230618 20:19:47.994"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:47.994" endtime="20230618 20:19:47.995"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:47.988" endtime="20230618 20:19:47.995"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_63")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.001" level="INFO">${text} = 이정재·이병헌 이어 임시완·강하늘…'오겜2' 라인업 공개</msg>
+<status status="PASS" starttime="20230618 20:19:47.995" endtime="20230618 20:19:48.001"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.002" endtime="20230618 20:19:48.002"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:47.995" endtime="20230618 20:19:48.002"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_64")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.011" level="INFO">${text} = 구혜선 "미지급 1억 달라" 전 소속사에 소송 냈다 패소</msg>
+<status status="PASS" starttime="20230618 20:19:48.002" endtime="20230618 20:19:48.011"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.012" endtime="20230618 20:19:48.012"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.002" endtime="20230618 20:19:48.012"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_65")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.023" level="INFO">${text} = 곽튜브, 학폭 피해 "유전병 있어…컴퍼스로 등 찍히기도"</msg>
+<status status="PASS" starttime="20230618 20:19:48.012" endtime="20230618 20:19:48.023"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.024" endtime="20230618 20:19:48.024"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.012" endtime="20230618 20:19:48.024"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_66")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.031" level="INFO">${text} = 손준호, 중국서 구속수사 받는다…선수생활 중대 기로</msg>
+<status status="PASS" starttime="20230618 20:19:48.024" endtime="20230618 20:19:48.032"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.032" endtime="20230618 20:19:48.033"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.024" endtime="20230618 20:19:48.033"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_67")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.042" level="INFO">${text} = 상점 털려다 출입문 셔터 내려오자…끼인 채 맥주 '콸콸'</msg>
+<status status="PASS" starttime="20230618 20:19:48.034" endtime="20230618 20:19:48.042"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.043" endtime="20230618 20:19:48.043"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.033" endtime="20230618 20:19:48.043"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_68")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.102" level="INFO">${text} = '부산' 새긴 현대차 전기차, 파리 달린다…부산엑스포 유치 지원</msg>
+<status status="PASS" starttime="20230618 20:19:48.044" endtime="20230618 20:19:48.102"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.102" endtime="20230618 20:19:48.102"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.043" endtime="20230618 20:19:48.102"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_69")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.121" level="INFO">${text} = "헌혈하면 벌금 감면"…우루과이 이색 법안 추진 이유가?</msg>
+<status status="PASS" starttime="20230618 20:19:48.104" endtime="20230618 20:19:48.121"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.121" endtime="20230618 20:19:48.122"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.104" endtime="20230618 20:19:48.122"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_70")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.130" level="INFO">${text} = 대법 "부당해고 근로자 정년 후 재고용 기간도 임금 지급"</msg>
+<status status="PASS" starttime="20230618 20:19:48.122" endtime="20230618 20:19:48.130"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.131" endtime="20230618 20:19:48.131"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.122" endtime="20230618 20:19:48.131"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_71")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.139" level="INFO">${text} = 7월 국제선 유류할증료, 대한항공 동결 · 아시아나 인하</msg>
+<status status="PASS" starttime="20230618 20:19:48.131" endtime="20230618 20:19:48.139"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.139" endtime="20230618 20:19:48.139"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.131" endtime="20230618 20:19:48.139"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_72")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.148" level="INFO">${text} = "시신 숨기면 피해자 된다고…" 정유정이 언급한 한국영화</msg>
+<status status="PASS" starttime="20230618 20:19:48.140" endtime="20230618 20:19:48.148"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.149" endtime="20230618 20:19:48.149"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.140" endtime="20230618 20:19:48.149"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_73")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.158" level="INFO">${text} = 필리핀 여객선, 운항 중 화재…승객·선원 120명 전원 구조</msg>
+<status status="PASS" starttime="20230618 20:19:48.150" endtime="20230618 20:19:48.158"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.158" endtime="20230618 20:19:48.158"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.149" endtime="20230618 20:19:48.158"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_74")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.166" level="INFO">${text} = 지난해 병원 간 이유 1위는?…코로나로 2천200만 명 외래진료</msg>
+<status status="PASS" starttime="20230618 20:19:48.159" endtime="20230618 20:19:48.166"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.167" endtime="20230618 20:19:48.168"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.158" endtime="20230618 20:19:48.168"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_75")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.175" level="INFO">${text} = 마윈, 공개행보 시작…도쿄대 강의 · 알리바바 행사 참석</msg>
+<status status="PASS" starttime="20230618 20:19:48.168" endtime="20230618 20:19:48.175"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.175" endtime="20230618 20:19:48.175"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.168" endtime="20230618 20:19:48.176"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_76")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.188" level="INFO">${text} = '740% 급증' 인천공항 출입국장 이용객…법무부, 심사환경개선</msg>
+<status status="PASS" starttime="20230618 20:19:48.176" endtime="20230618 20:19:48.188"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.188" endtime="20230618 20:19:48.188"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.176" endtime="20230618 20:19:48.190"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_77")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.198" level="INFO">${text} = "엔화로 바꿔 주세요"…'여행 · 투자' 엔화 환전액 1년 새 5배로</msg>
+<status status="PASS" starttime="20230618 20:19:48.190" endtime="20230618 20:19:48.198"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.199" endtime="20230618 20:19:48.199"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.190" endtime="20230618 20:19:48.199"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_78")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.213" level="INFO">${text} = 29억 체납 한의사…"잠깐, 억울해" 이러고 도주하면 끝?</msg>
+<status status="PASS" starttime="20230618 20:19:48.199" endtime="20230618 20:19:48.214"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.214" endtime="20230618 20:19:48.214"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.199" endtime="20230618 20:19:48.214"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_79")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.229" level="INFO">${text} = 돈 떼일라…한국 기업 주재원 7명이 중국서 억류됐다</msg>
+<status status="PASS" starttime="20230618 20:19:48.214" endtime="20230618 20:19:48.229"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.229" endtime="20230618 20:19:48.229"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.214" endtime="20230618 20:19:48.229"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_80")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.240" level="INFO">${text} = "중고로 샀는데, 작동이 안 돼요"…환불 길 열린다</msg>
+<status status="PASS" starttime="20230618 20:19:48.230" endtime="20230618 20:19:48.241"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.241" endtime="20230618 20:19:48.241"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.230" endtime="20230618 20:19:48.241"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_81")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.248" level="INFO">${text} = 김남국 의원이 사랑한 '잡코인'…15초 만에 '뚝딱' 만들어 봤습니다</msg>
+<status status="PASS" starttime="20230618 20:19:48.241" endtime="20230618 20:19:48.248"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.248" endtime="20230618 20:19:48.248"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.241" endtime="20230618 20:19:48.248"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_82")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.261" level="INFO">${text} = 5개 종목 무더기 하한가…제2의 라덕연 사태?</msg>
+<status status="PASS" starttime="20230618 20:19:48.248" endtime="20230618 20:19:48.261"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.261" endtime="20230618 20:19:48.262"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.248" endtime="20230618 20:19:48.262"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_83")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.274" level="INFO">${text} = 상반기 서울 아파트 절반 이상 '역전세'…보증금 차이 1억 넘어</msg>
+<status status="PASS" starttime="20230618 20:19:48.262" endtime="20230618 20:19:48.274"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.275" endtime="20230618 20:19:48.275"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.262" endtime="20230618 20:19:48.275"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_84")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.282" level="INFO">${text} = "실제 이자 10% 이상"…청년만 주는 '시중 최고금리 적금' 출시</msg>
+<status status="PASS" starttime="20230618 20:19:48.275" endtime="20230618 20:19:48.282"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.283" endtime="20230618 20:19:48.285"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.275" endtime="20230618 20:19:48.285"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_85")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.295" level="INFO">${text} = 비상구 강제 개방 뿐 아냐…코로나 이후 기내 난동도 증가</msg>
+<status status="PASS" starttime="20230618 20:19:48.285" endtime="20230618 20:19:48.295"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.296" endtime="20230618 20:19:48.296"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.285" endtime="20230618 20:19:48.296"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_86")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.308" level="INFO">${text} = "수요 없으면 공급 없어"…박성웅이 디지털 성범죄 영화를 선택한 이유</msg>
+<status status="PASS" starttime="20230618 20:19:48.296" endtime="20230618 20:19:48.308"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.309" endtime="20230618 20:19:48.310"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.296" endtime="20230618 20:19:48.310"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_87")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.319" level="INFO">${text} = 정승환, 입대 전 마지막 앨범 발매…"팬들과 함께한 10년 담았다"</msg>
+<status status="PASS" starttime="20230618 20:19:48.310" endtime="20230618 20:19:48.319"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.319" endtime="20230618 20:19:48.320"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.310" endtime="20230618 20:19:48.320"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_88")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.344" level="INFO">${text} = '사냥개들' 우도환 "김새론 음주운전 청천벽력…눈 앞이 까매졌다"</msg>
+<status status="PASS" starttime="20230618 20:19:48.320" endtime="20230618 20:19:48.344"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.344" endtime="20230618 20:19:48.344"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.320" endtime="20230618 20:19:48.344"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_89")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.359" level="INFO">${text} = 김은희 작가, 송은이 회사와 전속계약…"장항준이 자랑 많이 해"</msg>
+<status status="PASS" starttime="20230618 20:19:48.345" endtime="20230618 20:19:48.359"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.359" endtime="20230618 20:19:48.359"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.345" endtime="20230618 20:19:48.359"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_90")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.366" level="INFO">${text} = '영국이 그렇게 따뜻하다면서?'…2년째 날아든 아프리카 철새</msg>
+<status status="PASS" starttime="20230618 20:19:48.360" endtime="20230618 20:19:48.366"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.366" endtime="20230618 20:19:48.366"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.360" endtime="20230618 20:19:48.368"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_91")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.377" level="INFO">${text} = "헌혈하면 벌금 감면"…우루과이 이색 법안 추진 이유가?</msg>
+<status status="PASS" starttime="20230618 20:19:48.368" endtime="20230618 20:19:48.377"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.377" endtime="20230618 20:19:48.377"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.368" endtime="20230618 20:19:48.377"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_92")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.386" level="INFO">${text} = '50시간 스포츠카 운전 챌린지' 이탈리아 유튜버, 5살 목숨 앗아갔다</msg>
+<status status="PASS" starttime="20230618 20:19:48.377" endtime="20230618 20:19:48.386"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.386" endtime="20230618 20:19:48.387"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.377" endtime="20230618 20:19:48.387"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_93")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.401" level="INFO">${text} = 숨진 장인어른 집에서 발견한 1,300만 원…"기뻐하지도 못해"</msg>
+<status status="PASS" starttime="20230618 20:19:48.388" endtime="20230618 20:19:48.401"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.401" endtime="20230618 20:19:48.402"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.388" endtime="20230618 20:19:48.402"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_94")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.410" level="INFO">${text} = 수업 중 교수가 자리 비우자…교대생들 '은밀한 조작'</msg>
+<status status="PASS" starttime="20230618 20:19:48.402" endtime="20230618 20:19:48.410"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.410" endtime="20230618 20:19:48.411"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.402" endtime="20230618 20:19:48.411"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_95")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.418" level="INFO">${text} = 항쟁의 역사 담긴 기념비인데…누리꾼 공분 산 근황</msg>
+<status status="PASS" starttime="20230618 20:19:48.411" endtime="20230618 20:19:48.418"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.419" endtime="20230618 20:19:48.419"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.411" endtime="20230618 20:19:48.419"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_96")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.429" level="INFO">${text} = 입구 막은 민폐 주차 따지니 "운전 연습해라" 조롱</msg>
+<status status="PASS" starttime="20230618 20:19:48.420" endtime="20230618 20:19:48.429"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.429" endtime="20230618 20:19:48.430"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.420" endtime="20230618 20:19:48.430"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_97")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.439" level="INFO">${text} = 층간흡연 자제 부탁했다가…'보복 테러' 당한 임신부</msg>
+<status status="PASS" starttime="20230618 20:19:48.430" endtime="20230618 20:19:48.439"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.439" endtime="20230618 20:19:48.440"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.430" endtime="20230618 20:19:48.440"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_98")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.447" level="INFO">${text} = "한 달 유급휴가도"…열정페이 논란 후 강민경 '파격 복지'</msg>
+<status status="PASS" starttime="20230618 20:19:48.440" endtime="20230618 20:19:48.447"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.447" endtime="20230618 20:19:48.448"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.440" endtime="20230618 20:19:48.448"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_99")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.457" level="INFO">${text} = 100억 일타강사 "호캉스에 오마카세…저출산은 허세 탓"</msg>
+<status status="PASS" starttime="20230618 20:19:48.448" endtime="20230618 20:19:48.457"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.457" endtime="20230618 20:19:48.457"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.448" endtime="20230618 20:19:48.457"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_100")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.464" level="INFO">${text} = "악어가 나타났어요"…영주 관광 명소서 등장, 수색 중</msg>
+<status status="PASS" starttime="20230618 20:19:48.457" endtime="20230618 20:19:48.464"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.464" endtime="20230618 20:19:48.465"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.457" endtime="20230618 20:19:48.465"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="7bedfff11ff974e95a515c83031f42c4", element="A93B1AB264D0564E501814C5043318A0_element_101")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:48.474" level="INFO">${text} = "이게 4만 원 바비큐, 생수병 나눈 소주…바가지 당했다"</msg>
+<status status="PASS" starttime="20230618 20:19:48.465" endtime="20230618 20:19:48.474"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:48.474" endtime="20230618 20:19:48.474"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:48.465" endtime="20230618 20:19:48.474"/>
+</iter>
+<status status="PASS" starttime="20230618 20:19:47.841" endtime="20230618 20:19:48.475"/>
+</for>
+<kw name="Close Browser" library="RPA.Browser.Selenium">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230618 20:19:48.475" endtime="20230618 20:19:50.540"/>
+</kw>
+<kw name="Get Time" library="BuiltIn">
+<var>@{time}</var>
+<arg>year month day hour min sec</arg>
+<doc>Returns the given time in the requested format.</doc>
+<msg timestamp="20230618 20:19:50.541" level="INFO">@{time} = [ 2023 | 06 | 18 | 20 | 19 | 50 ]</msg>
+<status status="PASS" starttime="20230618 20:19:50.540" endtime="20230618 20:19:50.541"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${file_name}</var>
+<arg>NewsData_${time}[0]${time}[1]${time}[2].xlsx</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230618 20:19:50.542" level="INFO">${file_name} = NewsData_20230618.xlsx</msg>
+<status status="PASS" starttime="20230618 20:19:50.541" endtime="20230618 20:19:50.542"/>
+</kw>
+<kw name="Create Workbook" library="RPA.Excel.Files">
+<arg>${file_name}</arg>
+<arg>xlsx</arg>
+<arg>${Sheet Name}[0]_${time}[0]${time}[1]${time}[2]${time}[3]${time}[4]${time}[5]</arg>
+<doc>Create and open a new Excel workbook.</doc>
+<status status="PASS" starttime="20230618 20:19:50.543" endtime="20230618 20:19:50.547"/>
+</kw>
+<kw name="Append Rows To Worksheet" library="RPA.Excel.Files">
+<arg>${text_list}</arg>
+<doc>Append values to the end of the worksheet.</doc>
+<status status="PASS" starttime="20230618 20:19:50.547" endtime="20230618 20:19:50.549"/>
+</kw>
+<kw name="Save Workbook" library="RPA.Excel.Files">
+<arg>%{ROBOT_ROOT}${/}result${/}${file_name}</arg>
+<doc>Save the active workbook.</doc>
+<status status="PASS" starttime="20230618 20:19:50.549" endtime="20230618 20:19:50.564"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>News text extracted and saved to ${File Name}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230618 20:19:50.564" level="INFO">News text extracted and saved to NewsData_20230618.xlsx</msg>
+<status status="PASS" starttime="20230618 20:19:50.564" endtime="20230618 20:19:50.564"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:43.459" endtime="20230618 20:19:50.565"/>
+</kw>
+<kw name="KBS Task">
+<kw name="Open Available Browser" library="RPA.Browser.Selenium">
+<arg>${URL}[1]</arg>
+<arg>headless=${TRUE}</arg>
+<doc>Attempts to open a browser on the user's device from a set of
+supported browsers. Automatically downloads a corresponding webdriver
+if none is already installed.</doc>
+<msg timestamp="20230618 20:19:50.566" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg timestamp="20230618 20:19:50.569" level="INFO">====== WebDriver manager ======</msg>
+<msg timestamp="20230618 20:19:52.323" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg timestamp="20230618 20:19:53.439" level="INFO">Created Chrome browser with arguments: --headless --disable-gpu --window-size=1440,900 --disable-dev-shm-usage --disable-web-security --allow-running-insecure-content --no-sandbox</msg>
+<msg timestamp="20230618 20:19:53.439" level="INFO" html="true">&lt;p&gt;Attempted combinations:&lt;/p&gt;&lt;div class="doc"&gt;&lt;table&gt;&lt;tr&gt;&lt;th&gt;Browser&lt;/th&gt;&lt;th&gt;Download&lt;/th&gt;&lt;th&gt;Error&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Chrome&lt;/td&gt;&lt;td&gt;False&lt;/td&gt;&lt;td&gt;Message: 'chromedriver' executable needs to be in PATH. Please see https://chromedriver.chromium.org/home
+&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Chrome&lt;/td&gt;&lt;td&gt;True&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</msg>
+<msg timestamp="20230618 20:19:53.439" level="INFO">Opening url 'https://news.kbs.co.kr/common/main.html'</msg>
+<status status="PASS" starttime="20230618 20:19:50.565" endtime="20230618 20:19:55.874"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="RPA.Browser.Selenium">
+<arg>class:desc</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230618 20:19:55.874" endtime="20230618 20:19:55.886"/>
+</kw>
+<kw name="Get WebElements" library="RPA.Browser.Selenium">
+<var>${text_elements}</var>
+<arg>class:desc .tit</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<msg timestamp="20230618 20:19:55.901" level="INFO">${text_elements} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_140")&gt;, &lt;selenium.webdriver.remote.webelement.WebElemen...</msg>
+<status status="PASS" starttime="20230618 20:19:55.887" endtime="20230618 20:19:55.901"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${text_list}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20230618 20:19:55.902" level="INFO">${text_list} = []</msg>
+<status status="PASS" starttime="20230618 20:19:55.902" endtime="20230618 20:19:55.902"/>
+</kw>
+<for flavor="IN">
+<var>${element}</var>
+<value>@{text_elements}</value>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_140")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:55.916" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:55.903" endtime="20230618 20:19:55.916"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:55.917" endtime="20230618 20:19:55.917"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:55.903" endtime="20230618 20:19:55.917"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_141")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:55.930" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:55.917" endtime="20230618 20:19:55.930"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:55.930" endtime="20230618 20:19:55.930"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:55.917" endtime="20230618 20:19:55.931"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_142")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:55.939" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:55.931" endtime="20230618 20:19:55.939"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:55.939" endtime="20230618 20:19:55.940"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:55.931" endtime="20230618 20:19:55.940"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_143")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:55.946" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:55.940" endtime="20230618 20:19:55.946"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:55.947" endtime="20230618 20:19:55.947"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:55.940" endtime="20230618 20:19:55.947"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_144")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:55.954" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:55.947" endtime="20230618 20:19:55.955"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:55.955" endtime="20230618 20:19:55.956"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:55.947" endtime="20230618 20:19:55.956"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_145")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:55.962" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:55.956" endtime="20230618 20:19:55.962"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:55.963" endtime="20230618 20:19:55.963"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:55.956" endtime="20230618 20:19:55.963"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_146")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:55.970" level="INFO">${text} = 당정 “해양방사능 조사 확대…중대범죄자 30일 내 모습 공개”</msg>
+<status status="PASS" starttime="20230618 20:19:55.963" endtime="20230618 20:19:55.971"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:55.971" endtime="20230618 20:19:55.971"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:55.963" endtime="20230618 20:19:55.972"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_147")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:55.979" level="INFO">${text} = 국민의힘·정부, 내일 ‘공교육 강화·사교육비 절감 방안’ 논의</msg>
+<status status="PASS" starttime="20230618 20:19:55.972" endtime="20230618 20:19:55.979"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:55.979" endtime="20230618 20:19:55.980"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:55.972" endtime="20230618 20:19:55.980"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_148")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:55.990" level="INFO">${text} = “층간 누수 문제 때문에”…이웃 살해·방화 혐의 30대 검거</msg>
+<status status="PASS" starttime="20230618 20:19:55.981" endtime="20230618 20:19:55.990"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:55.990" endtime="20230618 20:19:55.991"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:55.981" endtime="20230618 20:19:55.991"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_149")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:55.998" level="INFO">${text} = 서울 등 수도권 첫 폭염주의보…내일 더 덥다</msg>
+<status status="PASS" starttime="20230618 20:19:55.991" endtime="20230618 20:19:55.998"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:55.998" endtime="20230618 20:19:55.999"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:55.991" endtime="20230618 20:19:55.999"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_150")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.008" level="INFO">${text} = 블링컨-친강 미중 외교장관 회담…‘안전장치’ 논의</msg>
+<status status="PASS" starttime="20230618 20:19:55.999" endtime="20230618 20:19:56.008"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.008" endtime="20230618 20:19:56.009"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:55.999" endtime="20230618 20:19:56.009"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_151")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.019" level="INFO">${text} = 검찰, ‘하한가 사태’ 주식카페 운영자 부당이득 104억 원 추정</msg>
+<status status="PASS" starttime="20230618 20:19:56.010" endtime="20230618 20:19:56.019"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.019" endtime="20230618 20:19:56.019"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.009" endtime="20230618 20:19:56.020"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_152")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.031" level="INFO">${text} = [영상] 미국 오하이오서 30대 아빠가 세 아들 총격 살해</msg>
+<status status="PASS" starttime="20230618 20:19:56.021" endtime="20230618 20:19:56.031"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.031" endtime="20230618 20:19:56.031"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.020" endtime="20230618 20:19:56.031"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_153")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.042" level="INFO">${text} = 외국인이 내국인보다 범죄를 많이 저지를까?</msg>
+<status status="PASS" starttime="20230618 20:19:56.032" endtime="20230618 20:19:56.042"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.043" endtime="20230618 20:19:56.043"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.032" endtime="20230618 20:19:56.043"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_154")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.052" level="INFO">${text} = 의문의 묘지 표지석 도난 사건
+…범인은 누구?</msg>
+<status status="PASS" starttime="20230618 20:19:56.044" endtime="20230618 20:19:56.052"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.054" endtime="20230618 20:19:56.055"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.043" endtime="20230618 20:19:56.055"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_155")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.064" level="INFO">${text} = 김치찌개로 하나되는 난민·한국 아이들</msg>
+<status status="PASS" starttime="20230618 20:19:56.056" endtime="20230618 20:19:56.064"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.064" endtime="20230618 20:19:56.064"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.055" endtime="20230618 20:19:56.064"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_156")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.074" level="INFO">${text} = 금융 탐욕은 늘 보아뱀을 닮았다</msg>
+<status status="PASS" starttime="20230618 20:19:56.065" endtime="20230618 20:19:56.074"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.074" endtime="20230618 20:19:56.076"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.065" endtime="20230618 20:19:56.076"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_157")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.082" level="INFO">${text} = [영상] 해외에서 유행한다는 ‘소 껴안기’ 왜 하는 걸까?</msg>
+<status status="PASS" starttime="20230618 20:19:56.076" endtime="20230618 20:19:56.082"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.082" endtime="20230618 20:19:56.083"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.076" endtime="20230618 20:19:56.083"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_158")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.093" level="INFO">${text} = “상처난 마음 타투해드립니다”…
+문신 지우다 타투이스트 된 의사</msg>
+<status status="PASS" starttime="20230618 20:19:56.083" endtime="20230618 20:19:56.093"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.093" endtime="20230618 20:19:56.094"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.083" endtime="20230618 20:19:56.094"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_159")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.101" level="INFO">${text} = 방파제 낚시 재미에 안전 뒷전…빠지면 못 나온다</msg>
+<status status="PASS" starttime="20230618 20:19:56.094" endtime="20230618 20:19:56.101"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.101" endtime="20230618 20:19:56.102"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.094" endtime="20230618 20:19:56.102"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_160")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.111" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:56.102" endtime="20230618 20:19:56.111"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.111" endtime="20230618 20:19:56.112"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.102" endtime="20230618 20:19:56.112"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_161")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.120" level="INFO">${text} = 윤 대통령, ‘부산엑스포 유치’ 위해 프랑스 BIE 총회에서 ‘영어 연설’</msg>
+<status status="PASS" starttime="20230618 20:19:56.112" endtime="20230618 20:19:56.120"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.121" endtime="20230618 20:19:56.122"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.112" endtime="20230618 20:19:56.122"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_162")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.133" level="INFO">${text} = 이재명 “우리 바다·밥상 지킬 것” 국민의힘 “‘핵 폐수 선동에 어민 죽게 생겨”</msg>
+<status status="PASS" starttime="20230618 20:19:56.123" endtime="20230618 20:19:56.133"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.133" endtime="20230618 20:19:56.133"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.122" endtime="20230618 20:19:56.133"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_163")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.141" level="INFO">${text} = 검찰, 납북귀환 어부 35명 직권 재심 청구…피해자 “국가 사과해야”</msg>
+<status status="PASS" starttime="20230618 20:19:56.134" endtime="20230618 20:19:56.141"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.142" endtime="20230618 20:19:56.142"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.133" endtime="20230618 20:19:56.142"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_164")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.149" level="INFO">${text} = 해외로 나간 보이스피싱 피해금 4천5백만 원, 첫 국내 환수</msg>
+<status status="PASS" starttime="20230618 20:19:56.142" endtime="20230618 20:19:56.149"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.150" endtime="20230618 20:19:56.150"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.142" endtime="20230618 20:19:56.150"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_165")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.159" level="INFO">${text} = “사람들이 무시해서” 요양원서 환자 흉기로 찌른 20대 전 직원 검거</msg>
+<status status="PASS" starttime="20230618 20:19:56.150" endtime="20230618 20:19:56.159"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.159" endtime="20230618 20:19:56.160"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.150" endtime="20230618 20:19:56.160"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_166")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.169" level="INFO">${text} = 추경호 “6~7월 2%대 물가 진입…라면 가격 내려야”</msg>
+<status status="PASS" starttime="20230618 20:19:56.161" endtime="20230618 20:19:56.169"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.169" endtime="20230618 20:19:56.169"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.161" endtime="20230618 20:19:56.169"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_167")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.178" level="INFO">${text} = 경기 남양주 아파트서 불…경찰, 방화 가능성 수사</msg>
+<status status="PASS" starttime="20230618 20:19:56.170" endtime="20230618 20:19:56.178"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.179" endtime="20230618 20:19:56.179"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.170" endtime="20230618 20:19:56.179"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_168")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.184" level="INFO">${text} = 우크라이나, 러 점령지 추가 탈환…자포리자 중부전선 돌파</msg>
+<status status="PASS" starttime="20230618 20:19:56.179" endtime="20230618 20:19:56.184"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.184" endtime="20230618 20:19:56.185"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.179" endtime="20230618 20:19:56.185"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_169")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.195" level="INFO">${text} = “중국 공안, 축구대표 손준호 구속수사 전환…사법처리 수순”</msg>
+<status status="PASS" starttime="20230618 20:19:56.185" endtime="20230618 20:19:56.195"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.195" endtime="20230618 20:19:56.196"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.185" endtime="20230618 20:19:56.196"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_170")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.208" level="INFO">${text} = 아산병원 ‘흉부외과 명의’ 치어 숨지게 한 덤프트럭 기사 입건</msg>
+<status status="PASS" starttime="20230618 20:19:56.196" endtime="20230618 20:19:56.208"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.208" endtime="20230618 20:19:56.208"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.196" endtime="20230618 20:19:56.208"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_171")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.215" level="INFO">${text} = “법원 속여 집행유예”…검찰, 추가 수사로 ‘횡령범’ 구속기소</msg>
+<status status="PASS" starttime="20230618 20:19:56.209" endtime="20230618 20:19:56.215"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.215" endtime="20230618 20:19:56.216"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.209" endtime="20230618 20:19:56.216"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_172")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.225" level="INFO">${text} = 한글대장경 번역 주도 봉선사 월운 큰스님 열반</msg>
+<status status="PASS" starttime="20230618 20:19:56.216" endtime="20230618 20:19:56.225"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.226" endtime="20230618 20:19:56.226"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.216" endtime="20230618 20:19:56.226"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_173")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.233" level="INFO">${text} = 낙뢰 발생할 때 대피는
+‘차·건물 안’·‘낮은 곳’</msg>
+<status status="PASS" starttime="20230618 20:19:56.226" endtime="20230618 20:19:56.233"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.233" endtime="20230618 20:19:56.233"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.226" endtime="20230618 20:19:56.233"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_174")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.240" level="INFO">${text} = 부커상이 인정한 ‘매혹적 서사’…천명관이 말하는 ‘고래’</msg>
+<status status="PASS" starttime="20230618 20:19:56.233" endtime="20230618 20:19:56.240"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.241" endtime="20230618 20:19:56.241"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.233" endtime="20230618 20:19:56.241"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_175")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.249" level="INFO">${text} = 美 노동운동 이정표 할란카운티 …“지금 우리의 이야기”</msg>
+<status status="PASS" starttime="20230618 20:19:56.242" endtime="20230618 20:19:56.249"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.249" endtime="20230618 20:19:56.250"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.242" endtime="20230618 20:19:56.250"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_176")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.262" level="INFO">${text} = [영상] “내가 쏜다”더니 계산 안 하고 떠난 트럼프</msg>
+<status status="PASS" starttime="20230618 20:19:56.250" endtime="20230618 20:19:56.262"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.263" endtime="20230618 20:19:56.263"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.250" endtime="20230618 20:19:56.263"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_177")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.276" level="INFO">${text} = 포르투갈…마약 중독 국가에서 벗어난 비결</msg>
+<status status="PASS" starttime="20230618 20:19:56.263" endtime="20230618 20:19:56.276"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.276" endtime="20230618 20:19:56.276"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.263" endtime="20230618 20:19:56.276"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_178")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.286" level="INFO">${text} = 우크라이나, 러 점령지 추가 탈환…자포리자 중부전선 돌파</msg>
+<status status="PASS" starttime="20230618 20:19:56.277" endtime="20230618 20:19:56.286"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.287" endtime="20230618 20:19:56.288"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.276" endtime="20230618 20:19:56.289"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_179")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.299" level="INFO">${text} = 아산병원 ‘흉부외과 명의’ 치어 숨지게 한 덤프트럭 기사 입건</msg>
+<status status="PASS" starttime="20230618 20:19:56.289" endtime="20230618 20:19:56.299"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.299" endtime="20230618 20:19:56.299"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.289" endtime="20230618 20:19:56.299"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_180")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.308" level="INFO">${text} = 일본 홋카이도서 고속버스와 대형 트럭 충돌…5명 사망</msg>
+<status status="PASS" starttime="20230618 20:19:56.300" endtime="20230618 20:19:56.308"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.308" endtime="20230618 20:19:56.309"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.300" endtime="20230618 20:19:56.309"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_181")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.317" level="INFO">${text} = 이란·사우디 외교장관 회담…정상회담도 성사될 듯</msg>
+<status status="PASS" starttime="20230618 20:19:56.309" endtime="20230618 20:19:56.317"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.317" endtime="20230618 20:19:56.317"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.309" endtime="20230618 20:19:56.317"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_182")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.327" level="INFO">${text} = 5·18 투사회보·시국집회 주도 대학생 재심서 무죄</msg>
+<status status="PASS" starttime="20230618 20:19:56.318" endtime="20230618 20:19:56.327"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.327" endtime="20230618 20:19:56.327"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.317" endtime="20230618 20:19:56.327"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_183")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.333" level="INFO">${text} = 전주시의회, 중국산 전기버스 보조금 상임위 통과…일부 의원 “절차에 문제”</msg>
+<status status="PASS" starttime="20230618 20:19:56.327" endtime="20230618 20:19:56.333"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.333" endtime="20230618 20:19:56.334"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.327" endtime="20230618 20:19:56.334"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_184")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.344" level="INFO">${text} = 전북 완주·임실·순창 폭염주의보…내일도 불볕더위 이어져</msg>
+<status status="PASS" starttime="20230618 20:19:56.334" endtime="20230618 20:19:56.344"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.344" endtime="20230618 20:19:56.344"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.334" endtime="20230618 20:19:56.344"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_185")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.351" level="INFO">${text} = 패러글라이딩 또 사고…사망 이어 이번엔 발목 골절</msg>
+<status status="PASS" starttime="20230618 20:19:56.345" endtime="20230618 20:19:56.351"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.352" endtime="20230618 20:19:56.353"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.345" endtime="20230618 20:19:56.354"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_186")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.382" level="INFO">${text} = 김치찌개로 하나되는 난민·한국 아이들</msg>
+<status status="PASS" starttime="20230618 20:19:56.355" endtime="20230618 20:19:56.382"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.383" endtime="20230618 20:19:56.383"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.355" endtime="20230618 20:19:56.383"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_187")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.394" level="INFO">${text} = 의문의 묘지 표지석 도난 사건…범인은 누구?</msg>
+<status status="PASS" starttime="20230618 20:19:56.384" endtime="20230618 20:19:56.394"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.394" endtime="20230618 20:19:56.395"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.384" endtime="20230618 20:19:56.395"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_188")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.401" level="INFO">${text} = “사람들이 무시” 요양원서 환자 흉기로 찌른 20대 전 직원 검거</msg>
+<status status="PASS" starttime="20230618 20:19:56.396" endtime="20230618 20:19:56.401"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.401" endtime="20230618 20:19:56.402"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.396" endtime="20230618 20:19:56.402"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_189")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.411" level="INFO">${text} = 미국 오하이오서 30대 아빠가 세 아들 총격 살해</msg>
+<status status="PASS" starttime="20230618 20:19:56.402" endtime="20230618 20:19:56.411"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.412" endtime="20230618 20:19:56.412"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.402" endtime="20230618 20:19:56.412"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_190")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.419" level="INFO">${text} = 외국인이 내국인보다 범죄를 많이 저지를까?</msg>
+<status status="PASS" starttime="20230618 20:19:56.413" endtime="20230618 20:19:56.419"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.419" endtime="20230618 20:19:56.419"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.412" endtime="20230618 20:19:56.419"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_191")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.428" level="INFO">${text} = 서울에도 첫 폭염주의보…폭염특보 확대</msg>
+<status status="PASS" starttime="20230618 20:19:56.421" endtime="20230618 20:19:56.428"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.428" endtime="20230618 20:19:56.429"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.420" endtime="20230618 20:19:56.429"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_192")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.443" level="INFO">${text} = 해외에서 유행한다는 ‘소 껴안기’ 왜 하는 걸까?</msg>
+<status status="PASS" starttime="20230618 20:19:56.429" endtime="20230618 20:19:56.443"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.443" endtime="20230618 20:19:56.443"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.429" endtime="20230618 20:19:56.443"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_193")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.449" level="INFO">${text} = 도심 속 대기오염 줄여준다는 ‘액체 나무’ 등장</msg>
+<status status="PASS" starttime="20230618 20:19:56.443" endtime="20230618 20:19:56.449"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.450" endtime="20230618 20:19:56.450"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.443" endtime="20230618 20:19:56.450"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_194")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.459" level="INFO">${text} = 상대방 말이 글자로 보인다는 신박한 이 안경의 정체</msg>
+<status status="PASS" starttime="20230618 20:19:56.450" endtime="20230618 20:19:56.459"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.459" endtime="20230618 20:19:56.459"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.450" endtime="20230618 20:19:56.459"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_195")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.466" level="INFO">${text} = “하루도 아니고 한달을?” 육군 병장이 전역 연기한 진짜 이유</msg>
+<status status="PASS" starttime="20230618 20:19:56.459" endtime="20230618 20:19:56.466"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.466" endtime="20230618 20:19:56.466"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.459" endtime="20230618 20:19:56.467"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_196")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.474" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:56.467" endtime="20230618 20:19:56.474"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.474" endtime="20230618 20:19:56.476"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.467" endtime="20230618 20:19:56.476"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_197")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.482" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:56.476" endtime="20230618 20:19:56.482"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.482" endtime="20230618 20:19:56.483"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.476" endtime="20230618 20:19:56.483"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_198")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.492" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:56.483" endtime="20230618 20:19:56.492"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.493" endtime="20230618 20:19:56.493"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.483" endtime="20230618 20:19:56.493"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_199")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.499" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:56.493" endtime="20230618 20:19:56.499"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.500" endtime="20230618 20:19:56.500"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.493" endtime="20230618 20:19:56.500"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_200")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.510" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:56.501" endtime="20230618 20:19:56.510"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.510" endtime="20230618 20:19:56.510"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.501" endtime="20230618 20:19:56.510"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_201")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.516" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:56.510" endtime="20230618 20:19:56.516"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.516" endtime="20230618 20:19:56.516"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.510" endtime="20230618 20:19:56.516"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_202")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.524" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:56.516" endtime="20230618 20:19:56.524"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.524" endtime="20230618 20:19:56.524"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.516" endtime="20230618 20:19:56.525"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_203")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.531" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:56.525" endtime="20230618 20:19:56.531"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.531" endtime="20230618 20:19:56.531"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.525" endtime="20230618 20:19:56.531"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_204")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.541" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:56.531" endtime="20230618 20:19:56.541"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.542" endtime="20230618 20:19:56.542"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.531" endtime="20230618 20:19:56.542"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_205")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.548" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:56.542" endtime="20230618 20:19:56.548"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.548" endtime="20230618 20:19:56.548"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.542" endtime="20230618 20:19:56.548"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_206")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.555" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:56.549" endtime="20230618 20:19:56.555"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.556" endtime="20230618 20:19:56.557"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.548" endtime="20230618 20:19:56.557"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_207")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.564" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:56.558" endtime="20230618 20:19:56.564"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.564" endtime="20230618 20:19:56.564"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.558" endtime="20230618 20:19:56.564"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_208")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.573" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:56.564" endtime="20230618 20:19:56.573"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.573" endtime="20230618 20:19:56.574"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.564" endtime="20230618 20:19:56.574"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_209")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.580" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:56.574" endtime="20230618 20:19:56.580"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.581" endtime="20230618 20:19:56.581"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.574" endtime="20230618 20:19:56.581"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_210")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.591" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:56.582" endtime="20230618 20:19:56.592"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.592" endtime="20230618 20:19:56.592"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.581" endtime="20230618 20:19:56.592"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_211")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.598" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:56.592" endtime="20230618 20:19:56.598"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.598" endtime="20230618 20:19:56.598"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.592" endtime="20230618 20:19:56.599"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_212")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.608" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:56.599" endtime="20230618 20:19:56.608"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.608" endtime="20230618 20:19:56.609"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.599" endtime="20230618 20:19:56.609"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_213")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.616" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:56.610" endtime="20230618 20:19:56.616"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.617" endtime="20230618 20:19:56.617"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.610" endtime="20230618 20:19:56.617"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_214")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.624" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:56.617" endtime="20230618 20:19:56.624"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.624" endtime="20230618 20:19:56.625"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.617" endtime="20230618 20:19:56.625"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_215")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.631" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:56.626" endtime="20230618 20:19:56.631"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.632" endtime="20230618 20:19:56.632"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.625" endtime="20230618 20:19:56.632"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_216")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.639" level="INFO">${text} = “중국 공안, 축구대표 손준호
+구속수사 전환…사법처리 수순”</msg>
+<status status="PASS" starttime="20230618 20:19:56.632" endtime="20230618 20:19:56.640"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.640" endtime="20230618 20:19:56.640"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.632" endtime="20230618 20:19:56.640"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_217")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.647" level="INFO">${text} = 타선 폭발·플럿코 무패 행진…LG, 두산 15-3으로 완파</msg>
+<status status="PASS" starttime="20230618 20:19:56.641" endtime="20230618 20:19:56.647"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.647" endtime="20230618 20:19:56.647"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.640" endtime="20230618 20:19:56.647"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_218")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.652" level="INFO">${text} = 여서정, 아시아선수권대회
+여자 도마 2연패</msg>
+<status status="PASS" starttime="20230618 20:19:56.648" endtime="20230618 20:19:56.652"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.652" endtime="20230618 20:19:56.653"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.648" endtime="20230618 20:19:56.653"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_219")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.662" level="INFO">${text} = 배드민턴 이소희-백하나, 인도네시아오픈 여자복식 우승</msg>
+<status status="PASS" starttime="20230618 20:19:56.654" endtime="20230618 20:19:56.662"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.662" endtime="20230618 20:19:56.662"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.653" endtime="20230618 20:19:56.662"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_220")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.668" level="INFO">${text} = 여자축구 벨 감독 “100분 뛸 수 있는 선수가 최종 명단에 들 것”</msg>
+<status status="PASS" starttime="20230618 20:19:56.663" endtime="20230618 20:19:56.668"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.668" endtime="20230618 20:19:56.668"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.662" endtime="20230618 20:19:56.668"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_221")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.678" level="INFO">${text} = 배우 구혜선, 전 소속사와
+‘유튜브 수익 분배’ 소송…1심서 패소</msg>
+<status status="PASS" starttime="20230618 20:19:56.669" endtime="20230618 20:19:56.678"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.678" endtime="20230618 20:19:56.678"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.669" endtime="20230618 20:19:56.678"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_222")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.689" level="INFO">${text} = 하이브 앤팀 “BTS처럼 전 세계서 사랑받는 음악만들고 싶어”</msg>
+<status status="PASS" starttime="20230618 20:19:56.679" endtime="20230618 20:19:56.690"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.690" endtime="20230618 20:19:56.690"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.679" endtime="20230618 20:19:56.690"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_223")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.698" level="INFO">${text} = 가슴 뭉클한 이야기 찾는다면…감성적 일본 영화 잇달아 개봉</msg>
+<status status="PASS" starttime="20230618 20:19:56.691" endtime="20230618 20:19:56.699"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.699" endtime="20230618 20:19:56.699"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.691" endtime="20230618 20:19:56.699"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_224")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.709" level="INFO">${text} = 온 서울이 보랏빛…‘BTS 해외 팬들 “여의도 왔어요”</msg>
+<status status="PASS" starttime="20230618 20:19:56.699" endtime="20230618 20:19:56.709"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.709" endtime="20230618 20:19:56.710"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.699" endtime="20230618 20:19:56.710"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_225")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.717" level="INFO">${text} = “사랑해, 서울” 잠실 달군 브루노 마스, 5만 관객 떼창에 감격</msg>
+<status status="PASS" starttime="20230618 20:19:56.710" endtime="20230618 20:19:56.717"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.717" endtime="20230618 20:19:56.717"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.710" endtime="20230618 20:19:56.718"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_226")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.728" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:56.718" endtime="20230618 20:19:56.728"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.728" endtime="20230618 20:19:56.728"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.718" endtime="20230618 20:19:56.728"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_227")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.734" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:56.728" endtime="20230618 20:19:56.734"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.734" endtime="20230618 20:19:56.735"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.728" endtime="20230618 20:19:56.735"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_228")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.745" level="INFO">${text} = 판다에게 양보하세요!…죽순 채취 금지령</msg>
+<status status="PASS" starttime="20230618 20:19:56.735" endtime="20230618 20:19:56.745"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.746" endtime="20230618 20:19:56.746"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.735" endtime="20230618 20:19:56.746"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_229")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.753" level="INFO">${text} = ‘3.13초 만에’…한국계 선수, 루빅스 큐브 세계신</msg>
+<status status="PASS" starttime="20230618 20:19:56.747" endtime="20230618 20:19:56.753"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.753" endtime="20230618 20:19:56.754"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.747" endtime="20230618 20:19:56.754"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_230")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.761" level="INFO">${text} = “횡재냐, 골칫거리냐” 집 청소 중
+1페니 동전 백만 개 발견</msg>
+<status status="PASS" starttime="20230618 20:19:56.754" endtime="20230618 20:19:56.761"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.762" endtime="20230618 20:19:56.762"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.754" endtime="20230618 20:19:56.762"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_231")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.768" level="INFO">${text} = 경매서 44억에 산 시계가 ‘짝퉁’
+…“제조사도 속았다”</msg>
+<status status="PASS" starttime="20230618 20:19:56.762" endtime="20230618 20:19:56.768"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.768" endtime="20230618 20:19:56.769"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.762" endtime="20230618 20:19:56.769"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_232")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.778" level="INFO">${text} = “나도 피서하러 왔어요” 미 해변서 수영한 흑곰</msg>
+<status status="PASS" starttime="20230618 20:19:56.769" endtime="20230618 20:19:56.779"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.779" endtime="20230618 20:19:56.779"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.769" endtime="20230618 20:19:56.779"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_233")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.788" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:56.779" endtime="20230618 20:19:56.788"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.788" endtime="20230618 20:19:56.789"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.779" endtime="20230618 20:19:56.789"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_234")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.795" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:56.790" endtime="20230618 20:19:56.795"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.796" endtime="20230618 20:19:56.796"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.789" endtime="20230618 20:19:56.796"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_235")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.801" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:56.796" endtime="20230618 20:19:56.801"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.801" endtime="20230618 20:19:56.801"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.796" endtime="20230618 20:19:56.802"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_236")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.809" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:56.802" endtime="20230618 20:19:56.809"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.809" endtime="20230618 20:19:56.809"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.802" endtime="20230618 20:19:56.810"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_237")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.817" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:56.811" endtime="20230618 20:19:56.817"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.817" endtime="20230618 20:19:56.817"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.810" endtime="20230618 20:19:56.817"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_238")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.824" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:56.817" endtime="20230618 20:19:56.824"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.824" endtime="20230618 20:19:56.825"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.817" endtime="20230618 20:19:56.825"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_239")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.830" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:56.825" endtime="20230618 20:19:56.831"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.831" endtime="20230618 20:19:56.831"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.825" endtime="20230618 20:19:56.831"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d30f037abcd942fe04e30af6e3b8588e", element="6405BDD012297FC1197056D67EA8C71B_element_240")&gt;</var>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 20:19:56.839" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20230618 20:19:56.831" endtime="20230618 20:19:56.839"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${text_list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230618 20:19:56.839" endtime="20230618 20:19:56.840"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:56.831" endtime="20230618 20:19:56.840"/>
+</iter>
+<status status="PASS" starttime="20230618 20:19:55.902" endtime="20230618 20:19:56.840"/>
+</for>
+<kw name="Close Browser" library="RPA.Browser.Selenium">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230618 20:19:56.840" endtime="20230618 20:19:58.932"/>
+</kw>
+<kw name="Get Time" library="BuiltIn">
+<var>@{time}</var>
+<arg>year month day hour min sec</arg>
+<doc>Returns the given time in the requested format.</doc>
+<msg timestamp="20230618 20:19:58.933" level="INFO">@{time} = [ 2023 | 06 | 18 | 20 | 19 | 58 ]</msg>
+<status status="PASS" starttime="20230618 20:19:58.933" endtime="20230618 20:19:58.933"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${file_name}</var>
+<arg>NewsData_${time}[0]${time}[1]${time}[2].xlsx</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230618 20:19:58.934" level="INFO">${file_name} = NewsData_20230618.xlsx</msg>
+<status status="PASS" starttime="20230618 20:19:58.933" endtime="20230618 20:19:58.934"/>
+</kw>
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>%{ROBOT_ROOT}${/}result${/}${file_name}</arg>
+<doc>Open an existing Excel workbook.</doc>
+<msg timestamp="20230618 20:19:58.935" level="INFO">Closing workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x000002972A26EA00&gt;</msg>
+<msg timestamp="20230618 20:19:58.947" level="INFO">Opened workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x000002972A17F970&gt;</msg>
+<status status="PASS" starttime="20230618 20:19:58.934" endtime="20230618 20:19:58.948"/>
+</kw>
+<kw name="Create Worksheet" library="RPA.Excel.Files">
+<arg>${Sheet Name}[1]_${time}[0]${time}[1]${time}[2]${time}[3]${time}[4]${time}[5]</arg>
+<doc>Create a new worksheet in the current workbook.</doc>
+<status status="PASS" starttime="20230618 20:19:58.948" endtime="20230618 20:19:58.950"/>
+</kw>
+<kw name="Append Rows To Worksheet" library="RPA.Excel.Files">
+<arg>${text_list}</arg>
+<doc>Append values to the end of the worksheet.</doc>
+<status status="PASS" starttime="20230618 20:19:58.950" endtime="20230618 20:19:58.951"/>
+</kw>
+<kw name="Save Workbook" library="RPA.Excel.Files">
+<doc>Save the active workbook.</doc>
+<status status="PASS" starttime="20230618 20:19:58.951" endtime="20230618 20:19:58.967"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>News text extracted and saved to ${File Name}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230618 20:19:58.967" level="INFO">News text extracted and saved to NewsData_20230618.xlsx</msg>
+<status status="PASS" starttime="20230618 20:19:58.967" endtime="20230618 20:19:58.968"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:50.565" endtime="20230618 20:19:58.968"/>
+</kw>
+<status status="PASS" starttime="20230618 20:19:43.458" endtime="20230618 20:19:58.968"/>
+</test>
+<status status="PASS" starttime="20230618 20:19:41.593" endtime="20230618 20:19:58.969"/>
+</suite>
+<status status="PASS" starttime="20230618 20:19:41.574" endtime="20230618 20:19:58.970"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Dailynewskeywords">Dailynewskeywords</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Tasks">Dailynewskeywords.Tasks</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
